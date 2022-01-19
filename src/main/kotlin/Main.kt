@@ -1,8 +1,11 @@
 var contactHandler = ContactHandler()
+var fileHandler = FileHandler()
 
 fun main(args: Array<String>) {
     contactHandler.contactlist.add(Contact("Eric", "Falkbring", mutableListOf<String>("0725566809"), mutableListOf("leo.soleke@gmail.com")))
     contactHandler.contactlist.add(Contact("Olle", "Börner", mutableListOf<String>("0734161513"), mutableListOf("veisse.petric@gmail.com", "olle.petersson@utb.helsingborg.se")))
+
+    fileHandler.writeContactsToFile()
 
     while (true) {
         var choice = -1
@@ -16,7 +19,7 @@ fun main(args: Array<String>) {
             println("\nContact added!\n")
         }
         else if (choice == 2) {
-            var successful = contactHandler.remove()
+            val successful = contactHandler.remove()
             if (successful) println("\nContact removed.\n")
             else println("\nCouldn't remove contact.\n")
         }

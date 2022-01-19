@@ -21,8 +21,8 @@ class ContactHandler() {
         var line = ""
         var firstname = ""
         var surname = ""
-        var phonenumber: MutableList<String> = mutableListOf()
-        var mail: MutableList<String> = mutableListOf()
+        val phonenumber: MutableList<String> = mutableListOf()
+        val mail: MutableList<String> = mutableListOf()
 
         print("Enter firstname: ")
         line = readLine().toString()
