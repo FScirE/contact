@@ -75,6 +75,10 @@ class ContactHandler() {
         print("Which contact do you want to edit? (Number only): ")
         val index = readLine().toString().toInt()
         if (index < 1 || index > contactlist.size) return false
+        val contact = contactlist[index - 1]
+
+        println()
+        contact.print()
 
         println("\nWhat do you want to edit?\n[1] Firstname\n[2] Surname\n[3] Phone numbers\n[4] Mail addresses")
         val choice = readLine().toString().toInt()
@@ -82,17 +86,39 @@ class ContactHandler() {
 
         if (choice == 1) {
             print("Enter new firstname: ")
-            contactlist[index - 1].firstname = readLine().toString()
+            contact.firstname = readLine().toString()
         }
         else if (choice == 2) {
             print("Enter new surname: ")
-            contactlist[index - 1].surname = readLine().toString()
+            contact.surname = readLine().toString()
         }
         else if (choice == 3) {
+            println("[1] Add phone number\n[2] Remove phone number")
+            val choice2 = readLine().toString().toInt()
 
+            if (choice2 == 1) {
+                print("Enter new phone number: ")
+                contact.phonenumber.add(readLine().toString())
+            }
+            else if (choice2 == 2) {
+                print("Which phone number do you want to remove? (Number only): ")
+                contact.phonenumber.removeAt(readLine().toString().toInt() - 1)
+            }
+            else return false
         }
         else {
+            println("[1] Add mail address\n[2] Remove mail address")
+            val choice2 = readLine().toString().toInt()
 
+            if (choice2 == 1) {
+                print("Enter new mail address: ")
+                contact.mail.add(readLine().toString())
+            }
+            else if (choice2 == 2) {
+                print("Which mail address do you want to remove? (Number only): ")
+                contact.mail.removeAt(readLine().toString().toInt() - 1)
+            }
+            else return false
         }
 
         return true
