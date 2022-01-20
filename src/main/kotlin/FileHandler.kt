@@ -1,25 +1,67 @@
 import java.io.File
 import java.io.InputStream
 
-class FileHandler() {
-    fun readContactsFromFile(): MutableList<Contact> {
-        val tempList: MutableList<Contact> = mutableListOf()
-        val inputStream: InputStream = File("contacts.txt").inputStream()
+class FileHandler {
+    fun readContactsFromFile() {
+        var inputStream: InputStream = InputStream.nullInputStream()
+        val file = File("contacts.txt")
+
+        if (file.exists()) inputStream = file.inputStream()
+        else file.createNewFile()
+
         val lineList = mutableListOf<String>()
+        inputStream.bufferedReader().forEachLine { lineList.add(it) }
+
+        var lineCounter = 0
+        var tempFirstname = ""
+        var tempSurname = ""
+        var tempPhonenumber: MutableList<String> = mutableListOf()
+        var tempMail: MutableList<String> = mutableListOf()
 
         for (s in lineList) {
-            //dela upp lista i flera listor
-        }
+            if (s == "%Contact%") {contactHandler.contactlist.add(Contact(tempFirstname, tempSurname, tempPhonenumber, tempMail))
+                tempFirstname = ""
+                tempSurname = ""
+                tempPhonenumber = mutableListOf()
+                tempMail = mutableListOf()
+                lineCounter = 0
 
-        return tempList
+                continue
+            }
+            else lineCounter++
+
+            //Förnamn och efternamn
+            if (lineCounter == 1) {
+                val tempLine: List<String> = s.split('%')
+                tempFirstname = tempLine[0]
+                tempSurname = tempLine[1]
+            }
+            //Telefonnummer
+            else if (lineCounter == 2) {
+                val tempLine: List<String> = s.split('%')
+                for (l in tempLine) {
+                    if (l != "") {
+                        tempPhonenumber.add(l)
+                    }
+                }
+            }
+            //E-postadress
+            else {
+                val tempLine: List<String> = s.split('%')
+                for (l in tempLine) {
+                    if (l != "") {
+                        tempMail.add(l)
+                    }
+                }
+            }
+        }
     }
+
     fun writeContactsToFile() {
         val file = File("contacts.txt")
-        file.createNewFile()
         file.writeText("")
 
         for (c in contactHandler.contactlist) {
-            file.appendText("%Contact%\n")
             file.appendText(c.firstname + "%" + c.surname + "\n")
             for (p in c.phonenumber) {
                 file.appendText("$p%")
@@ -28,7 +70,7 @@ class FileHandler() {
             for (m in c.mail) {
                 file.appendText("$m%")
             }
-            file.appendText("\n")
+            file.appendText("\n%Contact%\n")
         }
     }
 }
