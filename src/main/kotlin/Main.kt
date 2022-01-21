@@ -36,6 +36,7 @@ fun main(args: Array<String>) {
             contactHandler.print()
         }
         else if (choice == 6) {
+            println("Exiting...")
             fileHandler.writeContactsToFile()
             exitProcess(0)
         }
