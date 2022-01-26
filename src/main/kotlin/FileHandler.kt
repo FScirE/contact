@@ -31,26 +31,28 @@ class FileHandler {
             else lineCounter++
 
             //Förnamn och efternamn
-            if (lineCounter == 1) {
-                val tempLine: List<String> = s.split('%')
-                tempFirstname = tempLine[0]
-                tempSurname = tempLine[1]
-            }
-            //Telefonnummer
-            else if (lineCounter == 2) {
-                val tempLine: List<String> = s.split('%')
-                for (l in tempLine) {
-                    if (l != "") {
-                        tempPhonenumber.add(l)
+            when (lineCounter) {
+                1 -> {
+                    val tempLine: List<String> = s.split('%')
+                    tempFirstname = tempLine[0]
+                    tempSurname = tempLine[1]
+                }
+                //Telefonnummer
+                2 -> {
+                    val tempLine: List<String> = s.split('%')
+                    for (l in tempLine) {
+                        if (l != "") {
+                            tempPhonenumber.add(l)
+                        }
                     }
                 }
-            }
-            //E-postadress
-            else {
-                val tempLine: List<String> = s.split('%')
-                for (l in tempLine) {
-                    if (l != "") {
-                        tempMail.add(l)
+                //E-postadress
+                else -> {
+                    val tempLine: List<String> = s.split('%')
+                    for (l in tempLine) {
+                        if (l != "") {
+                            tempMail.add(l)
+                        }
                     }
                 }
             }

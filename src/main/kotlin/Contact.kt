@@ -84,41 +84,43 @@ class ContactHandler() {
         val choice = readLine().toString().toInt()
         if (choice < 1 || choice > 4) return false
 
-        if (choice == 1) {
-            print("Enter new firstname: ")
-            contact.firstname = readLine().toString()
-        }
-        else if (choice == 2) {
-            print("Enter new surname: ")
-            contact.surname = readLine().toString()
-        }
-        else if (choice == 3) {
-            println("[1] Add phone number\n[2] Remove phone number")
-            val choice2 = readLine().toString().toInt()
-
-            if (choice2 == 1) {
-                print("Enter new phone number: ")
-                contact.phonenumber.add(readLine().toString())
+        when (choice) {
+            1 -> {
+                print("Enter new firstname: ")
+                contact.firstname = readLine().toString()
             }
-            else if (choice2 == 2) {
-                print("Which phone number do you want to remove? (Number only): ")
-                contact.phonenumber.removeAt(readLine().toString().toInt() - 1)
+            2 -> {
+                print("Enter new surname: ")
+                contact.surname = readLine().toString()
             }
-            else return false
-        }
-        else {
-            println("[1] Add mail address\n[2] Remove mail address")
-            val choice2 = readLine().toString().toInt()
-
-            if (choice2 == 1) {
-                print("Enter new mail address: ")
-                contact.mail.add(readLine().toString())
+            3 -> {
+                println("[1] Add phone number\n[2] Remove phone number")
+                when (readLine().toString().toInt()) {
+                    1 -> {
+                        print("Enter new phone number: ")
+                        contact.phonenumber.add(readLine().toString())
+                    }
+                    2 -> {
+                        print("Which phone number do you want to remove? (Number only): ")
+                        contact.phonenumber.removeAt(readLine().toString().toInt() - 1)
+                    }
+                    else -> return false
+                }
             }
-            else if (choice2 == 2) {
-                print("Which mail address do you want to remove? (Number only): ")
-                contact.mail.removeAt(readLine().toString().toInt() - 1)
+            else -> {
+                println("[1] Add mail address\n[2] Remove mail address")
+                when (readLine().toString().toInt()) {
+                    1 -> {
+                        print("Enter new mail address: ")
+                        contact.mail.add(readLine().toString())
+                    }
+                    2 -> {
+                        print("Which mail address do you want to remove? (Number only): ")
+                        contact.mail.removeAt(readLine().toString().toInt() - 1)
+                    }
+                    else -> return false
+                }
             }
-            else return false
         }
 
         return true

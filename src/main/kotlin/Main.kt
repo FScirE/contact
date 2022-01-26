@@ -15,30 +15,32 @@ fun main(args: Array<String>) {
         println("==========================")
         choice = readLine().toString().toInt()
 
-        if (choice == 1) {
-            contactHandler.add()
-            println("\nContact added!\n")
-        }
-        else if (choice == 2) {
-            val successful = contactHandler.remove()
-            if (successful) println("\nContact removed.\n")
-            else println("\nCouldn't remove contact.\n")
-        }
-        else if (choice == 3) {
-            val successful = contactHandler.edit()
-            if (successful) println("\nContact edited!\n")
-            else println("\nCouldn't edit contact.\n")
-        }
-        else if (choice == 4) {
-            contactHandler.printlite()
-        }
-        else if (choice == 5) {
-            contactHandler.print()
-        }
-        else if (choice == 6) {
-            println("Exiting...")
-            fileHandler.writeContactsToFile()
-            exitProcess(0)
+        when (choice) {
+            1 -> {
+                contactHandler.add()
+                println("\nContact added!\n")
+            }
+            2 -> {
+                val successful = contactHandler.remove()
+                if (successful) println("\nContact removed.\n")
+                else println("\nCouldn't remove contact.\n")
+            }
+            3 -> {
+                val successful = contactHandler.edit()
+                if (successful) println("\nContact edited!\n")
+                else println("\nCouldn't edit contact.\n")
+            }
+            4 -> {
+                contactHandler.printlite()
+            }
+            5 -> {
+                contactHandler.print()
+            }
+            6 -> {
+                println("Exiting...")
+                fileHandler.writeContactsToFile()
+                exitProcess(0)
+            }
         }
     }
 }
