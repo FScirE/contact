@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
     while (true) {
         var choice = -1
         println("==========================")
-        println("[1] Add contact\n[2] Remove contact\n[3] Edit contact\n[4] Print contacts (compact)\n[5] Print contacts (full)\n[6] Exit and save")
+        println("[1] Add contact\n[2] Remove contact\n[3] Edit contact\n[4] Print contacts (compact)\n[5] Print contacts (full)\n[6] Sort list by name\n[7] Exit and save")
         println("==========================")
         choice = readLine().toString().toInt()
 
@@ -37,6 +37,10 @@ fun main(args: Array<String>) {
                 contactHandler.print()
             }
             6 -> {
+                contactHandler.contactlist.sortWith(compareBy(String.CASE_INSENSITIVE_ORDER) {it.firstname})
+                println("\nList sorted!\n")
+            }
+            7 -> {
                 println("Exiting...")
                 fileHandler.writeContactsToFile()
                 exitProcess(0)

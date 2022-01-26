@@ -30,8 +30,8 @@ class FileHandler {
             }
             else lineCounter++
 
-            //Förnamn och efternamn
             when (lineCounter) {
+                //Förnamn och efternamn
                 1 -> {
                     val tempLine: List<String> = s.split('%')
                     tempFirstname = tempLine[0]
