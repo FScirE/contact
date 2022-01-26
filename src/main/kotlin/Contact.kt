@@ -70,7 +70,7 @@ class ContactHandler {
         printlite()
 
         print("Which contact do you want to edit? (Number only): ")
-        val index = readLine().toString().toInt()
+        val index = readLine()!!.toInt()
         if (index < 1 || index > contactlist.size) return false
         val contact = contactlist[index - 1]
 
@@ -78,7 +78,7 @@ class ContactHandler {
         contact.print()
 
         println("\nWhat do you want to edit?\n[1] Firstname\n[2] Surname\n[3] Phone numbers\n[4] Mail addresses")
-        val choice = readLine().toString().toInt()
+        val choice = readLine()!!.toInt()
         if (choice < 1 || choice > 4) return false
 
         when (choice) {
@@ -92,28 +92,28 @@ class ContactHandler {
             }
             3 -> {
                 println("[1] Add phone number\n[2] Remove phone number")
-                when (readLine().toString().toInt()) {
+                when (readLine()!!.toInt()) {
                     1 -> {
                         print("Enter new phone number: ")
                         contact.phonenumber.add(readLine().toString())
                     }
                     2 -> {
                         print("Which phone number do you want to remove? (Number only): ")
-                        contact.phonenumber.removeAt(readLine().toString().toInt() - 1)
+                        contact.phonenumber.removeAt(readLine()!!.toInt() - 1)
                     }
                     else -> return false
                 }
             }
             else -> {
                 println("[1] Add mail address\n[2] Remove mail address")
-                when (readLine().toString().toInt()) {
+                when (readLine()!!.toInt()) {
                     1 -> {
                         print("Enter new mail address: ")
                         contact.mail.add(readLine().toString())
                     }
                     2 -> {
                         print("Which mail address do you want to remove? (Number only): ")
-                        contact.mail.removeAt(readLine().toString().toInt() - 1)
+                        contact.mail.removeAt(readLine()!!.toInt() - 1)
                     }
                     else -> return false
                 }

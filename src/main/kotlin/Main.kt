@@ -12,7 +12,7 @@ fun main() {
         println("==========================")
         println("[1] Add contact\n[2] Remove contact\n[3] Edit contact\n[4] Print contacts (compact)\n[5] Print contacts (full)\n[6] Sort list by name\n[7] Exit and save")
         println("==========================")
-        when (readLine().toString().toInt()) {
+        when (readLine()!!.toInt()) {
             1 -> {
                 contactHandler.add()
                 println("\nContact added!\n")
