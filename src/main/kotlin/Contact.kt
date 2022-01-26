@@ -18,23 +18,20 @@ class Contact(var firstname: String, var surname: String, var phonenumber: Mutab
     }
 }
 
-class ContactHandler() {
+class ContactHandler {
     var contactlist: MutableList<Contact> = mutableListOf()
 
     fun add() {
-        var line = ""
-        var firstname = ""
-        var surname = ""
         val phonenumber: MutableList<String> = mutableListOf()
         val mail: MutableList<String> = mutableListOf()
 
         print("Enter firstname: ")
-        line = readLine().toString()
-        firstname = line
+        var line = readLine().toString()
+        val firstname = line
 
         print("Enter surname: ")
         line = readLine().toString()
-        surname = line
+        val surname = line
 
         print("Enter phone number: ")
         phonenumber.add(readLine().toString())

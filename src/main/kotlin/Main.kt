@@ -3,19 +3,16 @@ import kotlin.system.exitProcess
 var contactHandler = ContactHandler()
 var fileHandler = FileHandler()
 
-fun main(args: Array<String>) {
+fun main() {
     //contactHandler.contactlist.add(Contact("Eric", "Falkbring", mutableListOf("0725566809"), mutableListOf("leo.soleke@gmail.com")))
     //contactHandler.contactlist.add(Contact("Olle", "Börner", mutableListOf("0734161513"), mutableListOf("veisse.petric@gmail.com", "olle.petersson@utb.helsingborg.se")))
     fileHandler.readContactsFromFile()
 
     while (true) {
-        var choice = -1
         println("==========================")
         println("[1] Add contact\n[2] Remove contact\n[3] Edit contact\n[4] Print contacts (compact)\n[5] Print contacts (full)\n[6] Sort list by name\n[7] Exit and save")
         println("==========================")
-        choice = readLine().toString().toInt()
-
-        when (choice) {
+        when (readLine().toString().toInt()) {
             1 -> {
                 contactHandler.add()
                 println("\nContact added!\n")
