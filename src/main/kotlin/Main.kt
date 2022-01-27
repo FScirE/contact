@@ -1,7 +1,7 @@
 import kotlin.system.exitProcess
 
-var contactHandler = ContactHandler()
-var fileHandler = FileHandler()
+val contactHandler = ContactHandler()
+val fileHandler = FileHandler()
 
 fun main() {
     //contactHandler.contactlist.add(Contact("Eric", "Falkbring", mutableListOf("0725566809"), mutableListOf("leo.soleke@gmail.com")))

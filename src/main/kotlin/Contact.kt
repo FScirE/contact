@@ -19,7 +19,7 @@ class Contact(var firstname: String, var surname: String, var phonenumber: Mutab
 }
 
 class ContactHandler {
-    var contactlist: MutableList<Contact> = mutableListOf()
+    val contactlist: MutableList<Contact> = mutableListOf()
 
     fun add() {
         val phonenumber: MutableList<String> = mutableListOf()
