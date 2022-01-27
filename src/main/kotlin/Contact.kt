@@ -126,7 +126,9 @@ class ContactHandler {
     fun print() {
         var i = 1
         for (c in contactlist) {
-            println("Contact $i ----------------------")
+            print("Contact $i ")
+            for (b in 0 ..  10 - i/10) { print("-") }
+            print("------------\n")
             c.print()
             println("---------------------------------\n")
             i++
